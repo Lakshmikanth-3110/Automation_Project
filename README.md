@@ -1,7 +1,8 @@
 # Automation_Project
 
 The Following are the Points that need to be done for Automation Project
-<<Verison 0.1>>
+
+<<Verison 0.1>> 
 
 1.	Perform an update of the package details and the package list at the start of the script.
 2.	Install the apache2 package if it is not already installed.
@@ -11,6 +12,7 @@ The Following are the Points that need to be done for Automation Project
 6.	The script should run the AWS CLI command and copy the archive to the s3 bucket. 
 
 <<Verison 0.2>>
+
 Cron Job and Bookeeping of Logs.
 
 <<End of Readme >>
