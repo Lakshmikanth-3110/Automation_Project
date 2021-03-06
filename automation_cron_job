@@ -1,0 +1,41 @@
+#!/bin/bash
+echo "INFO: Cron Job for Apache-Installation"
+
+####################################################################
+##########  Variable Declarations - Start  ##########
+#Name of the current script
+####################################################################
+SCRIPT_NAME="automation_cron_job.sh"
+#Version of the current script
+SCRIPT_VERSION=1.0
+
+echo "Start of Cron-Job of Automation Project"
+
+####################################################################
+# Author of the Script
+####################################################################
+AUTHOR="Lakshmikanth"
+Cron_Directory="/etc/cron.d/"
+Check_Cron_Job="/etc/cron.daily/automation"
+Automation_Project="/root/Automation_Project/automation.sh"
+timestamp=$(date '+%d%m%Y-%H%M%S')
+
+cd $Cron_Directory
+
+Check_Automation_exists=$(grep '0 0 * * * $Automation_Project' $Check_Cron_Job || echo '0 0 * * * $Automation_Project' >> $Check_Cron_Job)
+
+echo $Check_Automation_exists
+
+if [ $Check_Automation_exists ]
+then
+    echo "Cron Job Not Submitted" 
+	echo "Submitting Cron Job ....."
+	mkdir automation
+    chmod 777 automation
+	crontab -e
+	echo '0 0 * * * $Automation_Project' >> $Check_Cron_Job
+else
+    echo "Cron Job Already Submitted"    
+fi
+
+echo "End of Automation Script for Cron Job"
